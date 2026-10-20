@@ -23,7 +23,7 @@ test.describe("Todo list", () => {
 
   // Set DEMO_FAIL=1 to see how a failure shows up in the PR comment.
   test("shows the heading", async ({ page: p }) => {
-    await expect(p.getByRole("heading")).toHaveText(process.env.DEMO_FAIL ? "Todo list" : "Todos");
+    await expect(p.getByRole("heading")).toHaveText("Todo list");
   });
 
   test.skip("syncs with the server", async () => {});
