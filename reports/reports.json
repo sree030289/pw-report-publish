@@ -1,0 +1,19 @@
+{
+  "reports": [
+    {
+      "name": "main",
+      "title": "main",
+      "branch": "main",
+      "pr": null,
+      "commit": "0dd31c63ff61c5ac48838e3ef34fd1f7b19a9b63",
+      "runUrl": "https://github.com/sree030289/pw-report-publish/actions/runs/39415453070",
+      "counts": {
+        "passed": 2,
+        "failed": 1,
+        "flaky": 0,
+        "skipped": 1
+      },
+      "updatedAt": "2026-10-20T11:31:31.857Z"
+    }
+  ]
+}
