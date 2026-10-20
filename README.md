@@ -50,8 +50,8 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: { group: pages-publish, cancel-in-progress: false }
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 24 }
       - run: npm ci
       - run: npx playwright install --with-deps
@@ -95,11 +95,11 @@ Let each shard upload its blob report, then publish once from a final job. The a
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 24 }
       - run: npm ci                      # merge-reports needs @playwright/test installed
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with: { pattern: blob-report-*, path: all-blob-reports, merge-multiple: true }
       - uses: sree030289/pw-report-publish@v1
         with:
