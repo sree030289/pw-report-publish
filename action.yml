@@ -1,0 +1,60 @@
+name: Playwright Report Publish
+description: Host the Playwright HTML report and traces on GitHub Pages for every PR and branch, and comment on the PR with links to failed tests and their traces.
+author: Sreeram Vennapusa
+branding:
+  icon: upload-cloud
+  color: green
+
+inputs:
+  mode:
+    description: "publish (default) or cleanup (remove a closed PR's report)"
+    default: publish
+  report-dir:
+    description: Folder with Playwright's HTML report
+    default: playwright-report
+  results-json:
+    description: "Playwright JSON report, used for the summary and failed-test links. Default: $PLAYWRIGHT_JSON_OUTPUT_FILE, then results.json / test-results/results.json"
+    default: ""
+  blob-dir:
+    description: Folder with blob reports from sharded runs. When set, they are merged into one HTML + JSON report first
+    default: ""
+  name:
+    description: "Folder name for this report. Default: pr-<number> for pull requests, otherwise the branch name"
+    default: ""
+  branch:
+    description: Branch that GitHub Pages serves from
+    default: gh-pages
+  folder:
+    description: Folder on that branch that holds all reports
+    default: reports
+  comment:
+    description: Post (and keep updating) one comment on the pull request
+    default: "true"
+  summary:
+    description: Write the summary to the job summary page
+    default: "true"
+  retention-days:
+    description: Delete reports not updated for this many days (0 keeps them forever)
+    default: "30"
+  site-url:
+    description: "Base URL of the Pages site. Default: read from the GitHub API, or https://<owner>.github.io/<repo>/"
+    default: ""
+  github-token:
+    description: Token with contents:write and pull-requests:write
+    default: ${{ github.token }}
+
+outputs:
+  report-url:
+    description: URL of the published report
+  passed:
+    description: Number of passed tests
+  failed:
+    description: Number of failed tests
+  flaky:
+    description: Number of flaky tests
+  skipped:
+    description: Number of skipped tests
+
+runs:
+  using: node24
+  main: src/main.js

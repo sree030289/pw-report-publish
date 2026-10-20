@@ -1,0 +1,19 @@
+name: Remove PR report
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    concurrency: { group: pages-publish, cancel-in-progress: false }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          mode: cleanup

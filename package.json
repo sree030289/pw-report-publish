@@ -1,0 +1,15 @@
+{
+  "name": "pw-report-publish",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GitHub Action: host Playwright HTML reports and traces on GitHub Pages per PR and branch, with a PR comment linking failed tests to their traces.",
+  "license": "MIT",
+  "author": "Sreeram Vennapusa",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  }
+}
